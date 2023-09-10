@@ -1,0 +1,347 @@
+        @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css");
+        @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;1,700&family=Roboto+Mono:wght@400;700&display=swap');
+        @import url("buttons.css");
+        @import url("base.css");
+              
+        html {
+            scroll-behavior: smooth;                    
+        }
+        /*aşağıda footer ın relative position ı kapattık; main üzerinde biz sayfayı olduğu gibi kaplasın dediğimizde 100% nü kaplar görünür olan yüksekliği olduğu gibi maine verdiğimzi için footer görünür alanın dışına gidecek dolayısıyla bizim ne yapmamız gerekiyor mainin görünür alanın içerisinden yukarıdaki navigation ve footer ı çıkarıyor olamamız lazım 236 yı biz bulduk deneyerek tam ekran olması için yoksa scroll bar çıktı  şimdi benim monitörde 208px ama laptopta farklı çıkıyor*/
+        main {
+            min-height: calc(100vh - 236px);
+        }
+        #showcase { 
+            background: 
+            linear-gradient(to bottom, rgba(252,153,124,.2),rgba(250,81,30,.2)),
+            url('../img/bg.jpeg');
+            background-size: cover;
+            background-position: center;
+            height: 40vh;         
+            width: 100%; 
+            position: relative;         
+            background-attachment: fixed;   
+        }
+        #showcase .content {
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            color: #fff;
+            background: rgba(46, 76, 109, 0.3);
+            padding: 2rem;
+            width: 60%;
+            border-radius: 1rem;
+        }
+
+        #showcase h1 {
+            position: absolute;
+            margin: 0;
+            color: #fff;
+            top: 50%;
+            left: 50%;
+            /* bu transform özelliği ile yazının sol en üst kısmına göre konumlandırma yapmıştı artık bununla yazının merkezine taşıdım */
+            transform: translate(-50%,-50%);           
+        }
+        /* #showcase .content de  height a 40vh verdik yani ilk amacımız mobil telefonlar için tasarım yapıyoruz eğer farklı çözünürlükte cihazlar için media queri ler kullanıyoruz tam tersi de olur desktoplar için tasarım bir aşağıda min width yerine max width deriz media queri lere  */
+        @media (min-width:576px) {
+            #showcase {
+                height: 50vh;
+            }            
+        }
+        @media (min-width:768px) {
+            #showcase {
+                height: 60vh;
+            }            
+        }
+        @media (min-width:992px) {
+            #showcase {
+                height: 70vh;
+            }            
+        }
+
+        
+                               
+        .main-header {
+            /* hoca burayı position: fixed; ile yaptı onu izlemek için 81.bölüm 4.10  */
+            background-color: #FC997C;
+            padding: .8rem 1.6rem;
+            position: sticky;
+            top: 0;
+            z-index: +1;
+            background-size: contain;
+
+        }
+        /* calc() baya iyi bir öğrenilen özellikti */
+        .main-nav { 
+            display: inline-block;
+            width: calc(100% - 10rem);
+            text-align: right;
+            font-family: 'Roboto Mono', monospace;
+        }
+        .main-nav__items {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .main-nav__item {
+            display: inline-block;
+            margin: 0 1rem;
+        }
+        .main-header__logo {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 2.1rem;
+        }
+        /* :last-child demek en sondakine ulaşıyoruz; başlangıçta sadece en sondaki 3 çizgi icon gösterilmicek 600px lin altına indiğimizde gösterilcek*/
+        .main-nav__item:last-child {
+            display: none;
+        }
+        /* aralıkların hassasiyeti size kalmış dedi hoca siz uğraşırsınız */
+        /* 600px lin altına indiğimiz anda bütün elemanlar gösterilmesin sadece last-childe ulaşarak bu gösterilsin diyoruz */
+        @media (max-width: 600px) {
+            .main-nav__item {
+                display: none;
+            }
+            .main-nav__item:last-child {
+                display: block;
+            }
+            .responsive .main-nav__item {
+                display: block;
+                text-align: left;
+                margin: 1rem 0;
+            }
+            .responsive .main-nav__item:last-child {
+                position: absolute;
+                right: 40px;
+                top: 6px;
+            }
+            .responsive .main-nav {
+                display: block;
+            }
+        }
+
+        /* home ve diğerlerinin altındaki çizgiyi kaldırmak için main-nav__item a text-decoration: none; ekledik fakat olmadı neden a etiketi text dec... kalıtım yoluyla alır fakat tarayıcı varsayılanı direk a etiketine direk erişerek burada değer vermişler biz de onu ezmek için aşağıdaki yol izlenir. */
+        /* şimdi direk a yazıp bunu yapamayız belki başka a larda olursa onuda kapsıyacağı için olmaz dolayısıyla burada her bir a ya gidip class id verip de yapabiliriz onun yerine aşağıdaki gibi yapıcaz böyle de bir seçenek var  */
+        .main-nav__item a {
+            text-decoration: none;
+            color: #fff;
+        }
+        
+        .main-nav__item a:hover {
+            color: #2E4C6D;
+        }
+        /* li etiketine hover olduğumuz zaman li etiketinin beforuna ulaşırız yani noktanın üzerine geldiğimizde lacivert rengi vermiş olduk */
+        .main-nav__item:hover::before {
+            color: #2E4C6D;
+        }
+        /* bu şekilde virgülle birleştirebiliyoruz
+         .main-nav__item a:hover, .main-nav__item:hover::before {
+            color: #2E4C6D;
+            .main-nav__item:active::before, .main-nav__item a:active {
+            color: #fff;
+          */
+
+        /* tıkladığımızda nokta da beyaz olsun */
+        .main-nav__item:active::before {
+            color: #fff;
+        }
+        .main-nav__item a:active {
+            color: #fff;
+        }
+        /* filmler dizilerdeki noktaları kaldırıyoruz
+        .main-nav__item::before {
+            content: "\2022";
+            color: #fff;
+        }
+        
+        .main-nav__item--login::before {
+            content: none;            
+        } */
+
+        #how-it-works { 
+            text-align: center;
+            padding: 1rem;                     
+        }
+        /* font-weight i 600 verebiliriz ancak şuan tarayıcının kullanmış olduğu kütüphanede mevcut değil biz ekstra olarak bir font kütüphanesi kullandığımızda bu yazının daha kalın olmasını sağlayabilecez */               
+        
+        .icon-box h3 {
+            color: gray;
+            font-size: 2.2rem;
+        }
+        .icon-box i {
+            color: hotpink;
+        }
+        .features__left {
+            background: 
+            linear-gradient(to bottom, rgba(252,153,124,.2),rgba(250,81,30,.2)),
+            url('../img/features.jpeg');                     
+            background-size: cover;
+            background-position: top center;
+        }
+        .features__right {
+            background-color: #edf5f7;
+            padding: 3rem;
+            vertical-align: top;
+        }
+        .features__left,
+        .features__right {
+            height: 35rem;
+        }
+        .features__right h3 {
+            font-size: 3rem;            
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+            color: gray;
+            font-size: 3rem; 
+        }
+        /* burdan sonrası için rem i kestik hoca dedi siz uğraşabilirsiniz */
+        .plan {            
+            text-align: center;
+            padding: 5px;
+        }
+        .plan__badge {
+            background-color: #fff;
+            color: #FC997C;
+            padding: 8px;
+            border-radius: 10px;
+        }
+        .recommended_plan {
+            color: #fff;
+            background: #396eb0 !important;
+        }
+        .inner-plan { 
+            background-color: #edf5f7;
+            padding: 25px 15px;
+            border-radius: 10px;
+            /* yatay dikey blur yayılım renk */
+            /* internette box shadow examlples yazıp aratsan bir sürü hazır örnek var */
+            box-shadow: -5px 10px 15px 5px rgba(255, 0, 0, 0.2);
+            transition: box-shadow .3s;            
+        }
+        .inner-plan:hover { 
+            box-shadow: -5px 10px 15px 5px rgba(255, 0, 0, 0.6);            
+        }
+        .plan__features {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        /* ortadaki recommended yukarı kaydırmıştık onu mobil görününmde olmasın dolayısıyla min 768px de aktif olsun diyoruz yani min 768 e kadar bu aktif daha aşağısı iptal ediyor*/
+        @media (min-width: 768px) {
+            .plan--featured {
+                position: relative;
+                top: -20px;
+            }
+        }
+        
+        
+        .plan__features li {
+            margin: 6px 0;
+        }
+        
+        /* https://fontawesome.com/icons/circle-chevron-up?f=classic&s=solid */
+        #backtotop {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+        }
+        #backtotop i {
+            color: #4556ed;
+            font-size: 45px;
+            transition: color   0.5s;
+        }
+        #backtotop i:hover {
+            color: #fb6537;
+        }
+        .counter {
+            background: linear-gradient(to bottom,#fc997c 0%, #fc8b69 100%);
+            text-align: center;
+            padding: 50px;
+        }
+        .counter__item {
+            font-size: 30px;
+            font-weight: 500;
+            color: #fff;
+        }
+        .counter h4 {
+            margin: 0;
+            color: #fff;
+        }
+        .card-container {
+            padding: 10px;
+
+        }
+        .card {
+            background-color: #fff;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 10px 10px 40px rgba(52, 58, 64, 0.1);
+            position: relative;
+            /* top diyerek oynatacak olan kısmı söyledik */
+            top: 0;
+            /* all diyerek bütün property ler için tek tek vermek yerine  */
+            transition: all .4s;
+        }
+        .card:hover {
+            top: -20px;
+            /* alttaki tek transform ile position top ve bir üstteki top-20px ile hiç uğraşmadan da yapılabilir yorum satırı yapıp deneyebilirsin ben burda x için yaptım y vs de yapabilirsin */
+            /* transform: translateX(-10px); */
+        }
+        .card-image {
+            max-height: 350px;
+        }
+        .card-body {
+            padding: 30px;
+        }
+        
+        footer {
+            background-color: #2E4C6D;
+            padding: 30px;
+            margin-top: 30px;            
+            /* margin-top: 30px;
+            position: relative;
+            bottom: -200px; */
+        }
+        footer a {
+            color: #fff;
+            font-size: 18px;
+            text-decoration: none;
+            list-style-type: none;
+        }
+        footer ul {
+            margin: 0;
+            padding: 0;
+        }
+        footer ul li {
+            list-style-type: none;
+            display: inline-block;
+            margin-left: 5px;
+        }
+        .social-links {
+            text-align: right;
+        }
+
+        .fab {
+            padding: 10px;
+            border-radius: 50%;
+        }
+        .fab:hover {
+            opacity: 0.7;
+        }
+
+        .fa-facebook {
+            background-color: #3b5998;
+            color: #fff;
+        }
+        .fa-twitter {
+            background-color: #55acee;
+            color: #fff;
+        }
+        .fa-instagram {
+            background-color: #af2dd6;
+            color: #fff;
+        }
