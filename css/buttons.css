@@ -7,7 +7,6 @@
     cursor: pointer;
     border: none;
     border-radius: 5px;
-    /* transition: box-shadow .0.6; gibi bir genel transition deyip ardından box-shadow özelliğine de gidilebilir ama duration zaten işimizi görür */
     transition-duration: 0.5s;
 }
 .btn-primary {

@@ -5,7 +5,6 @@
         }
         body { 
             font-size: 1.4rem;
-            /* yani mobil görüntüde 14px görürüz */
             margin: 0;
             font-family: 'Lato', sans-serif;            
         }
@@ -29,11 +28,6 @@
             float: left;
             width: 50%;
         }
-        /* maksimum genişlik değeri 768 ise bu class ların hepsi yanyana gelecektir
-        .col-2, .col-3, .col-4 bunun yerine 
-        [class*="col-"] {
-                width: 100%;
-            } böyle de yapılabilir */
         @media (max-width: 768px) {
             .col-2, .col-3, .col-4 {
                 width: 100%;
@@ -47,7 +41,6 @@
         }        
         .container {
             width: 100%;
-            /* bu paddingleri mobilde sağ sol tam yapışmasın diye verdik */
             padding-left: 10px;
             padding-right: 10px;
         }

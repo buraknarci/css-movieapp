@@ -17,15 +17,12 @@
     }
 }
 .signup-form label,
-/* bizim bir alt satırda yaptığımız not checkboxlara uygulananları kaldırmak istememiz böyle daha efektif */
 .signup-form input:not([type="checkbox"]),
 .signup-form select {
     display: block;
     width: 100%;
     margin-top: 10px;
 }
-
-/* checkbox elemanını seçtik ve ondan sonra gelen eleman yani label (+ css selector yazıp w2school dan da bakabilirsin mesela div + p tüm divden sonra gelen ilk p ye uygula örneğin) */
 
 .signup-form input[type="checkbox"],
 .signup-form input[type="checkbox"] + label {
